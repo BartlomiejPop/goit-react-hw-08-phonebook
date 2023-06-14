@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { ContactList } from '../ContactList/ContactList';
 
 export class Filter extends Component {
   state = {
@@ -14,23 +15,19 @@ export class Filter extends Component {
         filteredNames.push(el);
       }
     });
-    console.log(filteredNames);
-    console.log(this.state);
+    // console.log(this.state);
     // this.props.onChange(filteredNames);
-    console.log(this.props);
-    // console.log(
-    //   this.props.names.names.map(el => {
-    //     el.startsWith(this.state.filter);
-    //   })
-    // );
+
+    this.setState({ filter: filteredNames });
+    this.props.onChange(value);
   };
 
   render() {
     return (
-      <div>
+      <>
         <h2>Find contacts by name</h2>
         <input type="text" onChange={this.handleFilter} />
-      </div>
+      </>
     );
   }
 }
