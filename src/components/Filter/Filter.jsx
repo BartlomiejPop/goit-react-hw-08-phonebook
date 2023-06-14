@@ -15,6 +15,7 @@ export class Filter extends Component {
       if (el.toLowerCase().includes(value.toLowerCase())) {
         filteredNames.push(el);
       }
+      return null;
     });
 
     this.setState({ filter: filteredNames });

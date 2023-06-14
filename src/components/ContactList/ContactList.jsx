@@ -10,7 +10,6 @@ export class ContactList extends Component {
   deleteContact = key => {
     this.props.onClick(this.props.names.filter(el => el.id !== key));
     this.setState({ names: this.props.names });
-    return this.props.names.filter(el => el.id !== key);
   };
 
   render() {
