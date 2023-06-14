@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { ContactList } from '../ContactList/ContactList';
+import styles from './Filter.module.css';
+import propTypes from 'prop-types';
 
 export class Filter extends Component {
   state = {
@@ -15,8 +16,6 @@ export class Filter extends Component {
         filteredNames.push(el);
       }
     });
-    // console.log(this.state);
-    // this.props.onChange(filteredNames);
 
     this.setState({ filter: filteredNames });
     this.props.onChange(value);
@@ -24,10 +23,15 @@ export class Filter extends Component {
 
   render() {
     return (
-      <>
+      <div className={styles.filterBox}>
         <h2>Find contacts by name</h2>
         <input type="text" onChange={this.handleFilter} />
-      </>
+      </div>
     );
   }
 }
+
+Filter.propTypes = {
+  handleFilter: propTypes.func,
+  names: propTypes.object,
+};

@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { Filter } from '../Filter/Filter';
+import styles from './ContactList.module.css';
+import propTypes from 'prop-types';
 
 export class ContactList extends Component {
   state = {
@@ -15,11 +16,12 @@ export class ContactList extends Component {
   render() {
     const names = this.props;
     return (
-      <ul>
+      <ul className={styles.contacts}>
         {names.names.map(n => (
-          <li key={n.id}>
+          <li className={styles.contact} key={n.id}>
             {n.name} {n.number}{' '}
             <button
+              className={styles.button}
               type="button"
               onClick={() => {
                 this.deleteContact(n.id);
@@ -33,3 +35,8 @@ export class ContactList extends Component {
     );
   }
 }
+
+ContactList.propTypes = {
+  deleteContact: propTypes.func,
+  names: propTypes.array,
+};
