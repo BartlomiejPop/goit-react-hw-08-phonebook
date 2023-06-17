@@ -10,6 +10,24 @@ export class App extends Component {
     filter: '',
   };
 
+  // componentDidMount() {
+  //   if (localStorage.getItem('state')) {
+  //     const state = JSON.parse(localStorage.getItem('state'));
+  //     this.setState = state;
+  //   }
+  // }
+
+  componentDidUpdate() {
+    const state = JSON.stringify(this.state);
+    const previousState = localStorage.getItem('state');
+    let items = [];
+    if (previousState) {
+      items = JSON.parse(previousState);
+    }
+    items.push(state);
+    localStorage.setItem('state', JSON.stringify(items));
+  }
+
   addNewName = (name, number) => {
     let isDuplicated = false;
     this.state.names.map(el => {

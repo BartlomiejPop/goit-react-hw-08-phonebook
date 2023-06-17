@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 export class Filter extends Component {
   state = {
     filter: '',
+    names: this.props,
   };
   handleFilter = e => {
     let value = e.target.value;
@@ -17,7 +18,7 @@ export class Filter extends Component {
       }
       return null;
     });
-
+    console.log(filteredNames);
     this.setState({ filter: filteredNames });
     this.props.onChange(value);
   };
