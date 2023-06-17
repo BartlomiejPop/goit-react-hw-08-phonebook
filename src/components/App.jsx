@@ -6,19 +6,21 @@ import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
-    names: [],
+    names: [
+      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
     filter: '',
   };
 
-  // componentDidMount() {
-  //   if (localStorage.getItem('state')) {
-  //     const state = JSON.parse(localStorage.getItem('state'));
-  //     this.setState = state;
-  //   }
-  // }
+  //   const [contacts, setContacts] = useState(initialContacts);
+  // const [filter, setFilter] = useState('');
 
   componentDidUpdate() {
-    const state = JSON.stringify(this.state);
+    console.log('test');
+    const state = this.state.names.map(el => JSON.stringify(el));
     const previousState = localStorage.getItem('state');
     let items = [];
     if (previousState) {
@@ -26,6 +28,18 @@ export class App extends Component {
     }
     items.push(state);
     localStorage.setItem('state', JSON.stringify(items));
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('state')) {
+      const state = localStorage.getItem('state');
+      const parsedState = JSON.parse(state);
+      console.log(parsedState);
+      const parsedStateArr = parsedState.map(el => JSON.parse(el));
+      console.log(parsedStateArr);
+      this.setState({ names: parsedStateArr });
+      // console.log(this.state);
+    }
   }
 
   addNewName = (name, number) => {
@@ -60,18 +74,25 @@ export class App extends Component {
   };
 
   deleteContact = contact => {
+    const updatedContacts = this.state.names.filter(el => el.id !== contact);
+    console.log(updatedContacts);
     console.log(contact);
-    this.setState({ names: contact, filter: contact });
+    this.setState({ names: updatedContacts, filter: updatedContacts });
   };
 
-  handleFilter = value => {
+  handleFilterChange = e => {
     // this.setState({ filter: value });
-    this.setState({
-      filter: this.state.names.filter(el =>
-        el.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-      ),
-    });
-    console.log(this.state);
+    // this.setState({
+    //   filter: this.state.names.filter(el =>
+    //     el.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+    //   ),
+    // });
+    const filteredNames = this.state.names.filter(el =>
+      el.name.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    console.log(filteredNames);
+    // console.log(e.target.value);
+    this.setState({ filter: filteredNames });
   };
 
   render() {
@@ -80,12 +101,16 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addNewName} />
         <h2>Contacts</h2>
-        <Filter names={this.state} onChange={this.handleFilter} />
+        <Filter
+          filter={this.state.filter}
+          handleFilterChange={this.handleFilterChange}
+        />
         <ContactList
           names={
+            // this.state.names
             this.state.filter === '' ? this.state.names : this.state.filter
           }
-          onClick={this.deleteContact}
+          deleteContact={this.deleteContact}
         />
       </div>
     );
