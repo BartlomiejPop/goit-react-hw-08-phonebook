@@ -21,13 +21,14 @@ export class App extends Component {
   componentDidUpdate() {
     console.log('test');
     const state = this.state.names.map(el => JSON.stringify(el));
-    const previousState = localStorage.getItem('state');
+    // const previousState = localStorage.getItem('state');
     let items = [];
-    if (previousState) {
-      items = JSON.parse(previousState);
-    }
+    // if (previousState) {
+    //   items = JSON.parse(previousState);
+    // }
     items.push(state);
-    localStorage.setItem('state', JSON.stringify(items));
+
+    localStorage.setItem('state', JSON.stringify(state));
   }
 
   componentDidMount() {
