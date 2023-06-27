@@ -10,7 +10,6 @@ export const ContactForm = ({ onSubmit }) => {
   // };
   const [name, changeName] = useState('');
   const [number, changeNumber] = useState('');
-  const [filter, changeFilter] = useState('');
 
   const handleNameChange = e => {
     const value = e.target.value;
