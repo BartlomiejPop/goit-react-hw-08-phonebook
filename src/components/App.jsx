@@ -6,24 +6,23 @@ import { nanoid } from 'nanoid';
 
 export const App = () => {
   const [names, changeNames] = useState([]);
-  const [filter, changeFilter] = useState([]);
+  const [filter, changeFilter] = useState('');
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // console.log('mounted');
+    console.log('mounted');
     setIsMounted(true);
     const storedState = localStorage.getItem('state');
     if (!storedState) return;
     const parsedState = JSON.parse(storedState);
-    // console.log(parsedState);
+    console.log(parsedState);
     changeNames(parsedState);
   }, []);
 
   useEffect(() => {
     if (!isMounted) return;
-    // console.log('actualized');
+    console.log('actualized');
     localStorage.setItem('state', JSON.stringify(names));
-    console.log(names);
   }, [names, isMounted]);
 
   const addNewName = (name, number) => {
@@ -75,7 +74,7 @@ export const App = () => {
       <h2>Contacts</h2>
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <ContactList
-        names={filter === [] ? names : filter}
+        names={filter === '' ? names : filter}
         deleteContact={deleteContact}
       />
     </div>
