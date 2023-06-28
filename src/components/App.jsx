@@ -10,23 +10,21 @@ export const App = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    console.log('mounted');
+    // console.log('mounted');
     setIsMounted(true);
     const storedState = localStorage.getItem('state');
     if (!storedState) return;
     const parsedState = JSON.parse(storedState);
-    console.log(parsedState);
+    // console.log(parsedState);
     changeNames(parsedState);
   }, []);
 
   useEffect(() => {
     if (!isMounted) return;
-    console.log('actualized');
-    const state = JSON.stringify(names);
-    // if (state !== localStorage.getItem('state')) {
-    localStorage.setItem('state', state);
-    // }
-  }, [names]);
+    // console.log('actualized');
+    localStorage.setItem('state', JSON.stringify(names));
+    console.log(names);
+  }, [names, isMounted]);
 
   const addNewName = (name, number) => {
     let isDuplicated = false;
