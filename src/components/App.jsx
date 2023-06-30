@@ -44,14 +44,15 @@ export const App = () => {
           number: number,
         },
       ]);
-      // changeFilter(prev => [
-      //   ...prev,
-      //   {
-      //     name: name,
-      //     id: nanoid(),
-      //     number: number,
-      //   },
-      // ]);
+      if (filter === '') return;
+      changeFilter(prev => [
+        ...prev,
+        {
+          name: name,
+          id: nanoid(),
+          number: number,
+        },
+      ]);
     }
   };
 
