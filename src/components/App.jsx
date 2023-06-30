@@ -23,7 +23,7 @@ export const App = () => {
     if (!isMounted) return;
     console.log('actualized');
     localStorage.setItem('state', JSON.stringify(names));
-    changeFilter([...names]);
+    // changeFilter([...names]);
   }, [names, isMounted]);
 
   const addNewName = (name, number) => {
@@ -57,8 +57,9 @@ export const App = () => {
 
   const deleteContact = contact => {
     const updatedContacts = names.filter(el => el.id !== contact);
-    const updatedFilteredContacts = filter.filter(el => el.id !== contact);
     changeNames(updatedContacts);
+    if (filter === '') return;
+    const updatedFilteredContacts = filter.filter(el => el.id !== contact);
     changeFilter(updatedFilteredContacts);
   };
 
