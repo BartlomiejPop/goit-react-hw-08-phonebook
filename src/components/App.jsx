@@ -15,7 +15,7 @@ export const App = () => {
     const storedState = localStorage.getItem('state');
     if (!storedState) return;
     const parsedState = JSON.parse(storedState);
-    console.log(parsedState);
+    // console.log(parsedState);
     changeNames(parsedState);
   }, []);
 
@@ -23,6 +23,7 @@ export const App = () => {
     if (!isMounted) return;
     console.log('actualized');
     localStorage.setItem('state', JSON.stringify(names));
+    changeFilter([...names]);
   }, [names, isMounted]);
 
   const addNewName = (name, number) => {
@@ -43,21 +44,22 @@ export const App = () => {
           number: number,
         },
       ]);
-      changeFilter(prev => [
-        ...prev,
-        {
-          name: name,
-          id: nanoid(),
-          number: number,
-        },
-      ]);
+      // changeFilter(prev => [
+      //   ...prev,
+      //   {
+      //     name: name,
+      //     id: nanoid(),
+      //     number: number,
+      //   },
+      // ]);
     }
   };
 
   const deleteContact = contact => {
     const updatedContacts = names.filter(el => el.id !== contact);
+    const updatedFilteredContacts = filter.filter(el => el.id !== contact);
     changeNames(updatedContacts);
-    changeFilter(updatedContacts);
+    changeFilter(updatedFilteredContacts);
   };
 
   const handleFilterChange = e => {
