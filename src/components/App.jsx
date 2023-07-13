@@ -1,74 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-import { nanoid } from 'nanoid';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact, deleteContact, setFilter } from '../redux/ContactsSlice';
 
 export const App = () => {
-  const [names, changeNames] = useState([]);
-  const [filter, changeFilter] = useState('');
-  const [isMounted, setIsMounted] = useState(false);
+  const names = useSelector(state => state.contacts.names);
+  const filter = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log('mounted');
-    setIsMounted(true);
     const storedState = localStorage.getItem('state');
-    if (!storedState) return;
-    const parsedState = JSON.parse(storedState);
-    // console.log(parsedState);
-    changeNames(parsedState);
-  }, []);
+    if (storedState) {
+      const parsedState = JSON.parse(storedState);
+      parsedState.forEach(el => {
+        const name = el.name;
+        const number = el.number;
+        dispatch(addContact({ name, number }));
+      });
+
+      // names.push(parsedState);
+    }
+  }, [dispatch]);
 
   useEffect(() => {
-    if (!isMounted) return;
     console.log('actualized');
     localStorage.setItem('state', JSON.stringify(names));
     // changeFilter([...names]);
-  }, [names, isMounted]);
+  }, [names]);
 
   const addNewName = (name, number) => {
-    let isDuplicated = false;
-    names.map(el => {
-      if (el.name === name) {
-        alert(`${name} is already in your contacts`);
-        isDuplicated = true;
-      }
-      return null;
-    });
-    if (!isDuplicated) {
-      changeNames(prev => [
-        ...prev,
-        {
-          name: name,
-          id: nanoid(),
-          number: number,
-        },
-      ]);
-      if (filter === '') return;
-      changeFilter(prev => [
-        ...prev,
-        {
-          name: name,
-          id: nanoid(),
-          number: number,
-        },
-      ]);
-    }
+    dispatch(addContact({ name, number }));
   };
 
-  const deleteContact = contact => {
-    const updatedContacts = names.filter(el => el.id !== contact);
-    changeNames(updatedContacts);
-    if (filter === '') return;
-    const updatedFilteredContacts = filter.filter(el => el.id !== contact);
-    changeFilter(updatedFilteredContacts);
+  const handleDelete = contact => {
+    dispatch(deleteContact(contact));
   };
 
   const handleFilterChange = e => {
-    const filteredNames = names.filter(el =>
-      el.name.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    changeFilter(filteredNames);
+    dispatch(setFilter(e.target.value));
   };
 
   return (
@@ -79,7 +51,7 @@ export const App = () => {
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <ContactList
         names={filter === '' ? names : filter}
-        deleteContact={deleteContact}
+        deleteContact={handleDelete}
       />
     </div>
   );

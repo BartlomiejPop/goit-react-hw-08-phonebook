@@ -3,11 +3,6 @@ import styles from './ContactForm.module.css';
 import propTypes from 'prop-types';
 
 export const ContactForm = ({ onSubmit }) => {
-  // state = {
-  //   name: '',
-  //   number: '',
-  //   filter: '',
-  // };
   const [name, changeName] = useState('');
   const [number, changeNumber] = useState('');
 
