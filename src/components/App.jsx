@@ -5,11 +5,14 @@ import { Filter } from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../redux/contactsSlice';
 import { fetchContacts, addContact, deleteContact } from 'redux/operations';
+import { getError, getIsLoading } from 'redux/selectors';
 
 export const App = () => {
   const names = useSelector(state => state.contacts.names);
   const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   const addNewName = (name, number) => {
     dispatch(addContact({ name, number }));
@@ -50,6 +53,7 @@ export const App = () => {
       <ContactForm onSubmit={addNewName} />
       <h2>Contacts</h2>
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
+      {isLoading && !error && <b>Request in progress...</b>}
       <ContactList
         names={filter === '' ? names : filter}
         deleteContact={handleDelete}

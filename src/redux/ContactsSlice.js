@@ -74,6 +74,8 @@ const contactsSlice = createSlice({
       state.names.push(newContact);
       if (state.filter === '') return;
       state.filter.push(newContact);
+      state.isLoading = false;
+      state.error = null;
     },
     [addContact.rejected]: handleRejected,
     [deleteContact.pending]: handlePending,
@@ -82,6 +84,8 @@ const contactsSlice = createSlice({
       state.names = state.names.filter(el => el.id !== contactId);
       if (state.filter === '') return;
       state.filter = state.filter.filter(el => el.id !== contactId);
+      state.isLoading = false;
+      state.error = null;
     },
     [deleteContact.rejected]: handleRejected,
   },
