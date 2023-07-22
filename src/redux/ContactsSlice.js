@@ -39,6 +39,7 @@ const contactsSlice = createSlice({
       const isDuplicated = state.names.some(el => el.name === name);
       if (isDuplicated) {
         alert(`${name} is already in your contacts`);
+        state.isLoading = false;
         return;
       }
       const newContact = {
@@ -47,20 +48,22 @@ const contactsSlice = createSlice({
         number,
       };
       state.names.push(newContact);
-      if (state.filter === '') return;
-      state.filter.push(newContact);
       state.isLoading = false;
       state.error = null;
+      if (state.filter !== '') {
+        state.filter.push(newContact);
+      }
     },
     [addContact.rejected]: handleRejected,
     [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, action) {
       const contactId = action.payload.id;
       state.names = state.names.filter(el => el.id !== contactId);
-      if (state.filter === '') return;
-      state.filter = state.filter.filter(el => el.id !== contactId);
       state.isLoading = false;
       state.error = null;
+      if (state.filter !== '') {
+        state.filter = state.filter.filter(el => el.id !== contactId);
+      }
     },
     [deleteContact.rejected]: handleRejected,
   },
