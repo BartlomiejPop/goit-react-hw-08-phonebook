@@ -1,14 +1,17 @@
-import React, { useEffect, lazy } from 'react';
+import React, {
+  // useEffect,
+  lazy,
+} from 'react';
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { ContactList } from './ContactList/ContactList';
 // import { Filter } from './Filter/Filter';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 // import { setFilter } from '../redux/contacts/contactsSlice';
-import {
-  fetchContacts,
-  addContact,
-  // deleteContact,
-} from 'redux/contacts/operations';
+// import {
+//   fetchContacts,
+//   addContact,
+//   // deleteContact,
+// } from 'redux/contacts/operations';
 // import { getError, getIsLoading } from 'redux/contacts/selectors';
 import { useAuth } from 'hooks';
 import { Route, Routes } from 'react-router-dom';
@@ -24,9 +27,9 @@ const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const names = useSelector(state => state.contacts.names);
-  // const filter = useSelector(state => state.contacts.filter);
-  const dispatch = useDispatch();
+  // const names = useSelector(state => state.contacts.names);
+  // // const filter = useSelector(state => state.contacts.filter);
+  // const dispatch = useDispatch();
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getError);
   const { isRefreshing } = useAuth();
@@ -43,13 +46,13 @@ export const App = () => {
   //   dispatch(setFilter(e.target.value));
   // };
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    addContact(JSON.stringify(names));
-  }, [names]);
+  // useEffect(() => {
+  //   addContact(JSON.stringify(names));
+  // }, [names]);
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
