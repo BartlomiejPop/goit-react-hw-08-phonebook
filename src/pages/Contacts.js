@@ -8,10 +8,13 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import { AppBar } from 'components/AppBar/AppBar';
 import styles from './styles.module.css';
+import { selectUser } from 'redux/auth/selectors';
 
 export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const userName = useSelector(selectUser);
+  console.log(userName);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -25,6 +28,7 @@ export default function Contacts() {
       {/* <TaskEditor /> */}
       <AppBar />
       <div className={styles.wrapper}>
+        <span className={styles.greetings}>Hello {userName.name}</span>
         <ContactForm />
         <Filter />
         <div className={styles.isLoading}>

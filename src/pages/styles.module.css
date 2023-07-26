@@ -1,5 +1,5 @@
 .wrapper {
-  margin-top: 100px;
+  margin-top: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,4 +16,11 @@
   width: 60%;
   display: flex;
   justify-content: center;
+}
+
+.greetings {
+  margin-bottom: 40px;
+  font-size: large;
+  font-weight: 600;
+  color: #817f7f;
 }
