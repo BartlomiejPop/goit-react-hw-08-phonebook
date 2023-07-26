@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/operations';
 // import css from './RegisterForm.module.css';
 
@@ -16,6 +16,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { selectIsError } from 'redux/auth/selectors';
 
 // function Copyright(props) {
 //   return (
@@ -38,6 +39,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 export const RegisterForm = () => {
   const defaultTheme = createTheme();
   const dispatch = useDispatch();
+  const isError = useSelector(selectIsError);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -148,13 +150,13 @@ export const RegisterForm = () => {
             >
               Sign Up
             </Button>
-            {/* <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                {isError &&
+                  `Something went wrong. Make sure your password is min.8 keys long
+                or try another name`}
               </Grid>
-            </Grid> */}
+            </Grid>
           </Box>
         </Box>
         {/* <Copyright sx={{ mt: 5 }} /> */}

@@ -2,6 +2,18 @@
   margin-top: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+
+  /* -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1); */
+}
+
+.isLoading {
+  background-color: #f9f9f9;
+  min-width: 300px;
+  max-width: 800px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
 }

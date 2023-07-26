@@ -1,6 +1,7 @@
 import React, {
   // useEffect,
   lazy,
+  useEffect,
 } from 'react';
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { ContactList } from './ContactList/ContactList';
@@ -19,6 +20,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 // import { refreshUser } from 'redux/auth/operations';
 
 const HomePage = lazy(() => import('../pages/Home'));
@@ -33,6 +36,11 @@ export const App = () => {
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getError);
   const { isRefreshing } = useAuth();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   // const addNewName = (name, number) => {
   //   dispatch(addContact({ name, number }));

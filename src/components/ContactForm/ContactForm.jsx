@@ -1,5 +1,4 @@
-import React from // { useState }
-'react';
+import React from 'react'; // { useState }
 import styles from './ContactForm.module.css';
 import propTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -32,7 +31,12 @@ export const ContactForm = () => {
     let newName = form.elements.name.value;
     let newNumber = form.elements.number.value;
     // onSubmit(newName, newNumber);
-    dispatch(addContact(newName, newNumber));
+    dispatch(
+      addContact({
+        name: newName,
+        number: newNumber,
+      })
+    );
     // changeName('');
     // changeNumber('');
     form.reset();

@@ -27,7 +27,9 @@ export default function Contacts() {
       <div className={styles.wrapper}>
         <ContactForm />
         <Filter />
-        <div>{isLoading && 'Request in progress...'}</div>
+        <div className={styles.isLoading}>
+          {isLoading && 'Request in progress...'}
+        </div>
         <ContactList />
       </div>
       {/* <TaskList /> */}
