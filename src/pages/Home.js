@@ -99,7 +99,6 @@ export default function SignInSide() {
               component="h1"
               variant="h1"
               style={{
-                fontFamily: 'myFont',
                 color: '#636367',
                 // textShadow: `3px 2px 6px rgba(66, 68, 90, 1)`,
               }}
