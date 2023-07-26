@@ -1,26 +1,132 @@
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import * as React from 'react';
+// import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+// import TextField from '@mui/material/TextField';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
+// import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+import { NavLink } from 'react-router-dom';
+// import { FormatTextdirectionLToRSharp } from '@mui/icons-material';
+import './fonts.css';
 
-export default function Home() {
+// export default function Home() {
+//   return (
+//     <div style={styles.container}>
+//       <h1 style={styles.title}>
+//         Task manager welcome page{' '}
+//         <span role="img" aria-label="Greeting icon">
+//           💁‍♀️
+//         </span>
+//       </h1>
+//     </div>
+//   );
+// }
+
+const defaultTheme = createTheme();
+// function HomeIcon(props: SvgIconProps) {
+//   return (
+//     <SvgIcon {...props}>
+//       <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+//     </SvgIcon>
+//   );
+// }
+
+export default function SignInSide() {
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>
-        Task manager welcome page{' '}
-        <span role="img" aria-label="Greeting icon">
-          💁‍♀️
-        </span>
-      </h1>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage:
+              'url(https://source.unsplash.com/random?wallpapers)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: t =>
+              t.palette.mode === 'light'
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 25,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}> */}
+            {/* <HomeIcon fontSize="large" /> */}
+            {/* </Avatar> */}
+            <Typography
+              component="h1"
+              variant="h2"
+              style={{ fontFamily: 'myFont', color: 'rgb(165, 163, 163)' }}
+            >
+              Phonebook
+            </Typography>
+            <Box
+              sx={{
+                mt: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                width: '75%',
+              }}
+            >
+              <NavLink
+                to="/login"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, p: 2, fontSize: 18 }}
+                >
+                  Sign in
+                </Button>
+              </NavLink>
+              <NavLink
+                to="/register"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
+                <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, p: 2, fontSize: 18 }}
+                >
+                  Register
+                </Button>
+              </NavLink>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
   );
 }

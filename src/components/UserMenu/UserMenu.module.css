@@ -1,20 +1,16 @@
-.link {
+.button {
   text-decoration: none;
   font-size: 25px;
   color: #989797;
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 
-.link:hover,
-.link:focus {
+.button:hover,
+.button:focus {
   color: #1565c0;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 250ms;
   outline: none;
-}
-
-.activeLink {
-  text-decoration: none;
-  font-size: 25px;
-  color: #1565c0;
-  margin-left: 100px;
 }

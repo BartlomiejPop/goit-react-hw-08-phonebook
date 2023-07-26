@@ -6,6 +6,7 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectIsLoading } from 'redux/contacts/selectors';
+import { AppBar } from 'components/AppBar/AppBar';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export default function Contacts() {
         <title>Your tasks</title>
       </Helmet>
       {/* <TaskEditor /> */}
+      <AppBar />
       <ContactForm />
       <Filter />
       <div>{isLoading && 'Request in progress...'}</div>

@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap')
+    format('truetype');
+}
+
+a {
+  color: rgb(165, 163, 163);
+}
