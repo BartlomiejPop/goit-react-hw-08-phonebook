@@ -7,6 +7,7 @@ import { Filter } from 'components/Filter/Filter';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import { AppBar } from 'components/AppBar/AppBar';
+import styles from './styles.module.css';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -23,10 +24,12 @@ export default function Contacts() {
       </Helmet>
       {/* <TaskEditor /> */}
       <AppBar />
-      <ContactForm />
-      <Filter />
-      <div>{isLoading && 'Request in progress...'}</div>
-      <ContactList />
+      <div className={styles.wrapper}>
+        <ContactForm />
+        <Filter />
+        <div>{isLoading && 'Request in progress...'}</div>
+        <ContactList />
+      </div>
       {/* <TaskList /> */}
     </>
   );

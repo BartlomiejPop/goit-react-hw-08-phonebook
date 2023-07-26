@@ -70,7 +70,19 @@ export default function SignInSide() {
             backgroundPosition: 'center',
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          style={{
+            backgroundColor: `rgba(255, 255, 255, 1)`,
+            backgroundImage: `linear-gradient(145deg, rgba(255, 255, 255, 1) 0%, rgba(216, 216, 224, 1) 100%)`,
+          }}
+        >
           <Box
             sx={{
               my: 25,
@@ -85,8 +97,12 @@ export default function SignInSide() {
             {/* </Avatar> */}
             <Typography
               component="h1"
-              variant="h2"
-              style={{ fontFamily: 'myFont', color: 'rgb(165, 163, 163)' }}
+              variant="h1"
+              style={{
+                fontFamily: 'myFont',
+                color: '#636367',
+                // textShadow: `3px 2px 6px rgba(66, 68, 90, 1)`,
+              }}
             >
               Phonebook
             </Typography>
