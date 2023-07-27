@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/210.ab510943.chunk.css","mappings":"AAAA,WACE,kBAAqB,CACrB,2FAEF,CAEA,EACE,aACF","sources":["pages/fonts.css"],"sourcesContent":["@font-face {\n  font-family: 'MyFont';\n  src: url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap')\n    format('truetype');\n}\n\na {\n  color: rgb(165, 163, 163);\n}\n"],"names":[],"sourceRoot":""}
