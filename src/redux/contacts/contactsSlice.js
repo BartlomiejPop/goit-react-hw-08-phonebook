@@ -13,14 +13,14 @@ const handleRejected = (state, action) => {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
-    names: [],
+    contacts: [],
     filter: '',
     isLoading: false,
     error: null,
   },
   reducers: {
     setFilter: (state, action) => {
-      state.filter = state.names.filter(el =>
+      state.filter = state.contacts.filter(el =>
         el.name.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
@@ -30,12 +30,12 @@ const contactsSlice = createSlice({
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.names = action.payload;
+      state.contacts = action.payload;
     },
     [fetchContacts.rejected]: handleRejected,
     [addContact.pending]: handlePending,
     [addContact.fulfilled](state, action) {
-      state.names.push(action.payload);
+      state.contacts.push(action.payload);
       state.isLoading = false;
       state.error = null;
       if (state.filter !== '') {
@@ -46,7 +46,7 @@ const contactsSlice = createSlice({
     [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, action) {
       const contactId = action.payload.id;
-      state.names = state.names.filter(el => el.id !== contactId);
+      state.contacts = state.contacts.filter(el => el.id !== contactId);
       state.isLoading = false;
       state.error = null;
       if (state.filter !== '') {
