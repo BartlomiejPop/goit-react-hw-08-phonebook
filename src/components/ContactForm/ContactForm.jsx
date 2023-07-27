@@ -27,7 +27,6 @@ export const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    console.log(form.elements.name.value);
     let newName = form.elements.name.value;
     let newNumber = form.elements.number.value;
     // onSubmit(newName, newNumber);

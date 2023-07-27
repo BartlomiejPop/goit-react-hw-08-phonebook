@@ -37,21 +37,21 @@ const contactsSlice = createSlice({
     [addContact.fulfilled](state, action) {
       const { name, number } = action.payload;
       const isDuplicated = state.names.some(el => el.name === name);
-      if (isDuplicated) {
-        alert(`${name} is already in your contacts`);
+
+      if (!isDuplicated) {
+        const newContact = {
+          name,
+          id: nanoid(),
+          number,
+        };
+        state.names.push(newContact);
         state.isLoading = false;
-        return;
-      }
-      const newContact = {
-        name,
-        id: nanoid(),
-        number,
-      };
-      state.names.push(newContact);
-      state.isLoading = false;
-      state.error = null;
-      if (state.filter !== '') {
-        state.filter.push(newContact);
+        state.error = null;
+        if (state.filter !== '') {
+          state.filter.push(newContact);
+        }
+      } else {
+        state.isLoading = false;
       }
     },
     [addContact.rejected]: handleRejected,
