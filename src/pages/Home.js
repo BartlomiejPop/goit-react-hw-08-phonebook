@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 // import { FormatTextdirectionLToRSharp } from '@mui/icons-material';
 import './fonts.css';
+import styles from './styles.module.css';
 
 // export default function Home() {
 //   return (
@@ -98,10 +99,7 @@ export default function SignInSide() {
             <Typography
               component="h1"
               variant="h1"
-              style={{
-                color: '#636367',
-                // textShadow: `3px 2px 6px rgba(66, 68, 90, 1)`,
-              }}
+              style={{ fontSize: '4rem', color: '#636367' }}
             >
               Phonebook
             </Typography>
@@ -118,6 +116,7 @@ export default function SignInSide() {
                 style={{ textDecoration: 'none', color: 'white' }}
               >
                 <Button
+                  className={styles.button}
                   type="submit"
                   fullWidth
                   variant="contained"
@@ -131,6 +130,7 @@ export default function SignInSide() {
                 style={{ textDecoration: 'none', color: 'white' }}
               >
                 <Button
+                  className={styles.button}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2, p: 2, fontSize: 18 }}

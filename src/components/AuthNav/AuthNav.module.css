@@ -1,6 +1,13 @@
 .authNav {
   display: flex;
   gap: 100px;
+  width: (260px);
+}
+
+@media (max-width: 454px) {
+  .authNav {
+    gap: 10px;
+  }
 }
 
 .link {

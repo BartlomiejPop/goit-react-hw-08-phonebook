@@ -1,11 +1,16 @@
 .contact {
-  width: 400px;
+  width: 80%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
   color: #817f7f;
+}
+
+@media (max-width: 600px) {
+  .contact {
+    width: 100%;
+  }
 }
 
 .contacts {
@@ -16,25 +21,25 @@
   gap: 10px;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  max-width: 800px;
-  min-width: 300px;
+  width: 100%;
+  /* max-width: 800px;
+  min-width: 300px; */
   background-color: #f9f9f9;
   border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0px 33px 22px -29px rgba(66, 68, 90, 1);
+  /* -webkit-box-shadow: 0px 33px 22px -29px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 33px 22px -29px rgba(66, 68, 90, 1);
-  box-shadow: 0px 33px 22px -29px rgba(66, 68, 90, 1);
+  box-shadow: 0px 33px 22px -29px rgba(66, 68, 90, 1); */
 }
 
 .number {
   color: #1565c0;
-  width: 100px;
+  width: 20%;
   display: flex;
   align-self: center;
 }
 
 .name {
-  width: 100px;
+  width: 20%;
   display: flex;
   align-self: center;
 }

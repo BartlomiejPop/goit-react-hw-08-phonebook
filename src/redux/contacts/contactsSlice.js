@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { addContact, fetchContacts, deleteContact } from './operations';
 
 const handlePending = state => {
@@ -36,23 +36,22 @@ const contactsSlice = createSlice({
     [addContact.pending]: handlePending,
     [addContact.fulfilled](state, action) {
       const { name, number } = action.payload;
-      const isDuplicated = state.names.some(el => el.name === name);
+      // const isDuplicated = state.names.some(el => el.name === name);
 
-      if (!isDuplicated) {
-        const newContact = {
-          name,
-          id: nanoid(),
-          number,
-        };
-        state.names.push(newContact);
-        state.isLoading = false;
-        state.error = null;
-        if (state.filter !== '') {
-          state.filter.push(newContact);
-        }
-      } else {
-        state.isLoading = false;
+      // if (!isDuplicated) {
+      const newContact = {
+        name,
+        number,
+      };
+      state.names.push(action.payload);
+      state.isLoading = false;
+      state.error = null;
+      if (state.filter !== '') {
+        state.filter.push(action.payload);
       }
+      // } else {
+      //   state.isLoading = false;
+      // }
     },
     [addContact.rejected]: handleRejected,
     [deleteContact.pending]: handlePending,

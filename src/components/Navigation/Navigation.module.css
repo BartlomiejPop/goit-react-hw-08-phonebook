@@ -18,3 +18,9 @@
   color: #1565c0;
   margin-left: 100px;
 }
+
+@media (max-width: 454px) {
+  .activeLink {
+    margin-left: 10px;
+  }
+}

@@ -28,12 +28,14 @@ export default function Contacts() {
       <AppBar />
       <div className={styles.wrapper}>
         <span className={styles.greetings}>Hello {userName.name}</span>
-        <ContactForm />
-        <Filter />
-        <div className={styles.isLoading}>
-          {isLoading && 'Request in progress...'}
+        <div className={styles.container}>
+          <ContactForm />
+          <Filter />
+          <div className={styles.isLoading}>
+            {isLoading && 'Request in progress...'}
+          </div>
+          <ContactList />
         </div>
-        <ContactList />
       </div>
       {/* <TaskList /> */}
     </>
