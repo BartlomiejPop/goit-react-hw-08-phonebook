@@ -1,54 +1,22 @@
 import * as React from 'react';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-// import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 import { NavLink } from 'react-router-dom';
-// import { FormatTextdirectionLToRSharp } from '@mui/icons-material';
 import './fonts.css';
-import styles from './styles.module.css';
-
-// export default function Home() {
-//   return (
-//     <div style={styles.container}>
-//       <h1 style={styles.title}>
-//         Task manager welcome page{' '}
-//         <span role="img" aria-label="Greeting icon">
-//           💁‍♀️
-//         </span>
-//       </h1>
-//     </div>
-//   );
-// }
 
 const defaultTheme = createTheme();
-// function HomeIcon(props: SvgIconProps) {
-//   return (
-//     <SvgIcon {...props}>
-//       <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-//     </SvgIcon>
-//   );
-// }
 
 export default function SignInSide() {
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
+  const boxShadowStyles = {
+    WebkitBoxShadow: '8px 8px 24px -2px rgba(66, 68, 90, 1)',
+    MozBoxShadow: '8px 8px 24px -2px rgba(66, 68, 90, 1)',
+    boxShadow: '8px 8px 24px -2px rgba(66, 68, 90, 1)',
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -93,9 +61,6 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}> */}
-            {/* <HomeIcon fontSize="large" /> */}
-            {/* </Avatar> */}
             <Typography
               component="h1"
               variant="h1"
@@ -116,7 +81,7 @@ export default function SignInSide() {
                 style={{ textDecoration: 'none', color: 'white' }}
               >
                 <Button
-                  className={styles.button}
+                  style={boxShadowStyles}
                   type="submit"
                   fullWidth
                   variant="contained"
@@ -130,7 +95,7 @@ export default function SignInSide() {
                 style={{ textDecoration: 'none', color: 'white' }}
               >
                 <Button
-                  className={styles.button}
+                  style={boxShadowStyles}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2, p: 2, fontSize: 18 }}

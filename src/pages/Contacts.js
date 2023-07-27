@@ -24,7 +24,6 @@ export default function Contacts() {
       <Helmet>
         <title>Your tasks</title>
       </Helmet>
-      {/* <TaskEditor /> */}
       <AppBar />
       <div className={styles.wrapper}>
         <span className={styles.greetings}>Hello {userName.name}</span>
@@ -37,7 +36,6 @@ export default function Contacts() {
           <ContactList />
         </div>
       </div>
-      {/* <TaskList /> */}
     </>
   );
 }

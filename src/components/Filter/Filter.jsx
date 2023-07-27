@@ -1,4 +1,3 @@
-// import { Component } from 'react';
 import styles from './Filter.module.css';
 import propTypes from 'prop-types';
 import TextField from '@mui/material/TextField';
@@ -14,8 +13,6 @@ export const Filter = () => {
 
   return (
     <div className={styles.filterBox}>
-      {/* <h2>Find contacts by name</h2> */}
-      {/* <input type="text" onChange={e => handleFilterChange(e)} /> */}
       <TextField
         id="standard-basic"
         type="text"
