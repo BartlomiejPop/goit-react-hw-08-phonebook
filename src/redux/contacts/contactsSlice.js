@@ -35,14 +35,14 @@ const contactsSlice = createSlice({
     [fetchContacts.rejected]: handleRejected,
     [addContact.pending]: handlePending,
     [addContact.fulfilled](state, action) {
-      const { name, number } = action.payload;
+      // const { name, number } = action.payload;
       // const isDuplicated = state.names.some(el => el.name === name);
 
       // if (!isDuplicated) {
-      const newContact = {
-        name,
-        number,
-      };
+      // const newContact = {
+      //   name,
+      //   number,
+      // };
       state.names.push(action.payload);
       state.isLoading = false;
       state.error = null;
