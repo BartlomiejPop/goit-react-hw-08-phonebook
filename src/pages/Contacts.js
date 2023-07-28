@@ -31,7 +31,7 @@ export default function Contacts() {
           <ContactForm />
           <Filter />
           <div className={styles.isLoading}>
-            {isLoading && 'Request in progress...'}
+            {isLoading && <div className={styles.customLoader}></div>}
           </div>
           <ContactList />
         </div>
