@@ -60,6 +60,7 @@ export const RegisterForm = () => {
                   name="name"
                   required
                   fullWidth
+                  pattern="^[A-Za-z.'\- ]+$"
                   id="firstName"
                   label="Name"
                   autoFocus
@@ -70,6 +71,7 @@ export const RegisterForm = () => {
                   required
                   fullWidth
                   id="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   label="Email Address"
                   name="email"
                   autoComplete="email"
