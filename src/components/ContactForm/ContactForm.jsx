@@ -30,7 +30,9 @@ export const ContactForm = () => {
           id="standard-basic"
           type="text"
           name="name"
-          pattern="^[A-Za-z.'\- ]+$"
+          inputProps={{
+            pattern: "^[A-Za-z.'- ]+$",
+          }}
           label="Name"
           variant="standard"
           style={{ width: '60%', alignSelf: 'center' }}
@@ -39,7 +41,9 @@ export const ContactForm = () => {
           id="standard-basic"
           type="text"
           name="number"
-          pattern="^\+?\d{1,4}?\s?\(?\d{1,4}?\)?\s?\d{1,4}\s?\d{1,4}\s?\d{1,9}$"
+          inputProps={{
+            pattern: '^[0-9]*$',
+          }}
           label="Number"
           variant="standard"
           style={{ width: '60%', alignSelf: 'center' }}
